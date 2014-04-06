@@ -1,28 +1,15 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Who pays…(for those who couldn’t make it, this is the app were creating)
 
-Things you may want to cover:
+First things first:
 
-* Ruby version
+Authentications
+ability create groups
+ability to join groups
+Search out other groups to join via location - wale
 
-* System dependencies
+2nd steps:
+Venmo authentication - (log in OR sign in through Venmo, twitter, or Facebook) this would tie into devise and signups. 
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+..work in progress. add to this….
