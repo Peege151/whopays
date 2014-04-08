@@ -10,6 +10,9 @@ class PoolsController < ApplicationController
   # GET /pools/1
   # GET /pools/1.json
   def show
+    @user = User.find_by(params[:id])
+    @pool = Pool.find_by(params[:pool_id])
+    @games = Game.where(params[:pool_id])
   end
 
   # GET /pools/new
@@ -25,7 +28,6 @@ class PoolsController < ApplicationController
   # POST /pools.json
   def create
     @pool = Pool.new(pool_params)
-
     respond_to do |format|
       if @pool.save
         format.html { redirect_to @pool, notice: 'Pool was successfully created.' }
@@ -36,6 +38,9 @@ class PoolsController < ApplicationController
       end
     end
   end
+def join
+  @pool = Pool.find_by(params[:id])
+end
 
   # PATCH/PUT /pools/1
   # PATCH/PUT /pools/1.json
@@ -70,5 +75,8 @@ class PoolsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def pool_params
       params.require(:pool).permit(:name)
+    end
+    def game_params
+      params.require(:game).permit(:user_id, :pool_id)
     end
 end

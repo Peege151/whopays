@@ -6,5 +6,7 @@ class CreateGames < ActiveRecord::Migration
 
       t.timestamps
     end
+    add_index :games, [:pool_id, :user_id], unique: true
+
   end
 end

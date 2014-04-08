@@ -6,6 +6,19 @@
   <strong>Name:</strong>
   <%= @pool.name %>
 </p>
+<p style="margin-left:50px;">
+	<strong> Users: </strong>
+	<br>
+	  <tbody>
+	    <% @games.each do |game| %>
+	      <tr>
+	        <td><%= game.user.email %></td> 
+	       	<td><%= link_to 'Leave Pool', game, method: :delete, data: { confirm: 'Are you sure?' } %></td> <br>
+	      </tr>
+	    <% end %>
+	  </tbody>
+</p>
+
 
 <%= link_to 'Edit', edit_pool_path(@pool) %> |
 <%= link_to 'Back', pools_path %>

@@ -1,0 +1,10 @@
+class GamesController < ApplicationController
+	def new
+		@game = Game.new
+	end
+
+	def create
+		@pool = Pool.find_by(params[:id])
+		@game = current_user.build(game_params)
+	end
+end
