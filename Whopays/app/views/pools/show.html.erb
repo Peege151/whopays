@@ -10,7 +10,7 @@
 	<strong> Users: </strong>
 	<br>
 	  <tbody>
-	    <% @games.each do |game| %>
+	    <% @pool.games.each do |game| %>
 	      <tr>
 	        <td><%= game.user.email %></td> 
 	        <% if game.user.id == current_user.id %>
@@ -22,6 +22,5 @@
 </p>
 
 
-<%= link_to 'Edit', edit_pool_path(@pool) %> |
-<%= link_to 'Back', pools_path %>
+
 </div>

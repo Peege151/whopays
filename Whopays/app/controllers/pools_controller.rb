@@ -11,7 +11,7 @@ class PoolsController < ApplicationController
   # GET /pools/1.json
   def show
     @user = User.find_by(params[:id])
-    @pool = Pool.find_by(params[:pool_id])
+    @pools = Pool.all
     @games = Game.where(params[:pool_id])
     #@game = Game.find_by(params[:user_id])
   end
@@ -19,6 +19,9 @@ class PoolsController < ApplicationController
   # GET /pools/new
   def new
     @pool = Pool.new
+  end
+  def join
+      @pool = Pool.find_by([:id])
   end
 
   # GET /pools/1/edit
@@ -39,9 +42,15 @@ class PoolsController < ApplicationController
       end
     end
   end
-def join
-  @pool = Pool.find_by(params[:id])
-end
+  def join
+     @join = current_user.games.build(game_params)
+        if @dog.save
+          flash[:success] = "Joined Pool"
+          redirect_to current_user
+        else
+          render 'static_pages/home'
+        end
+  end
 
   # PATCH/PUT /pools/1
   # PATCH/PUT /pools/1.json

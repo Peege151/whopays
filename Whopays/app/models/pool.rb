@@ -1,6 +1,6 @@
 class Pool < ActiveRecord::Base
-has_many :users
-has_many :games,
-			through: :users
+has_many :games
+has_many :users,
+			through: :games
 		
 end
