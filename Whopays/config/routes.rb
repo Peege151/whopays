@@ -4,9 +4,7 @@ Whopays::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  	devise_scope :user do
-  		root to: "devise/sessions#new"
-	end
+  root to: 'static_pages#home'
 
    # Setting up the gem 'omniauth-venmo' with path. Note: 'sessions' has been created in the controller in order to use this gem.
    get '/auth/:provider/callback', to: 'sessions#create' 
