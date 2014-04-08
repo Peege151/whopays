@@ -13,8 +13,9 @@ class PoolsController < ApplicationController
     @user = User.find_by(params[:id])
     @pool = Pool.find_by(params[:pool_id])
     @games = Game.where(params[:pool_id])
+    #@game = Game.find_by(params[:user_id])
   end
-
+  # current_user game is ... current_user.id = game.user.id
   # GET /pools/new
   def new
     @pool = Pool.new
