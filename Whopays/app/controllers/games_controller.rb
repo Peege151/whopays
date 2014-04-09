@@ -5,11 +5,11 @@ class GamesController < ApplicationController
 
 	  def create
 		@pool = Pool.find_by(params[:id])
-		@game = current_user.games.build(game_params)
+		@game = current_user.games.build(params[:game])
 	  end
 
 	  def create
-    	@game = current_user.games.build(game_params)
+    	@game = current_user.games.build(params[:game])
       if @game.save
         flash[:success] = "Game Created! Good Work!"
         render 'static_pages/home'
@@ -17,10 +17,11 @@ class GamesController < ApplicationController
         render 'static_pages/home'
       end
   
-  	private
+  	# private
 
        def game_params
       	params.require(:game)
        end
-  end
+    end
+    
 end
