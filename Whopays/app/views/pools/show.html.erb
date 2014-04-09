@@ -7,6 +7,9 @@
   <%= @pool.name %>
 </p>
 <p style="margin-left:50px;">
+	<% if @pool.games.count == 0 %>
+	<p> Empty Pool </p>
+	<% else %>
 	<strong> Users: </strong>
 	<br>
 	  <tbody>
@@ -18,8 +21,11 @@
 	       	<% end %>
 	      </tr>
 	    <% end %>
+	  <% end %>
+
 	  </tbody>
 </p>
+<%= link_to 'back', pools_path %>
 
 
 
