@@ -13,6 +13,9 @@
     <h5 class="muted">git commit -m "add basic style"</h5>
   </div>
   <hr />
+        <% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %>"><%= value %></div>
+        <% end %>
   <%= yield %>
 </div>
 </body>

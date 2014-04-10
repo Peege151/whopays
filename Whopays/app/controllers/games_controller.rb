@@ -14,12 +14,10 @@ class GamesController < ApplicationController
 	  	@pool = Pool.find_by(params[:id])
     	@game = current_user.games.build(pool_id: params[:pool_id])# :conditions => ["user_id != ?", current_user.id, "pool_id !=?", pool_id]
       if @game.save
-        flash[:success] = "Game Created! Good Work!"
-        redirect_to  @game.pool 
-        
+        redirect_to  @game.pool, :flash => { :success => "Pool Joined Successfully." }         
       else
-        flash[:fail] = "Something Happened..."
-        render 'static_pages/home'
+        flash[:error] = "You're Already In The Pool (Or Something Weird Happened...)"
+        redirect_to @game.pool
       end
     end
 
