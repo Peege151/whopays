@@ -3,6 +3,8 @@ class PoolsController < ApplicationController
 
   # GET /pools
   # GET /pools.json
+
+
   def index
     @pools = Pool.all
   end
@@ -13,7 +15,14 @@ class PoolsController < ApplicationController
     @user = User.find_by(params[:id])
     @pools = Pool.all
     @games = Game.where(params[:pool_id])
-    #@game = Game.find_by(params[:user_id])
+
+    ## Creates an Array Of User_IDs to later be randomly selected
+          @entrants = []
+            games = Pool.find_by(params[:id]).games
+              ids = games.each do |game|
+                @entrants << game.user.id
+              end
+      #Roll Methods
   end
   # current_user game is ... current_user.id = game.user.id
   # GET /pools/new
@@ -90,3 +99,6 @@ class PoolsController < ApplicationController
       params.require(:game).permit(:user_id, :pool_id)
     end
 end
+ Pool.first.games.each do |game|
+          game.user.id
+        end
