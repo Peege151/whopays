@@ -1,11 +1,16 @@
-class SessionsController < ApplicationController
+class SessionsController < Devise::SessionsController
 
 	
 
-	def create 
-		@user = User.find_or_create_from_auth_hash(auth_hash)
-		self.current_user = @user
-		redirect_to '/'
+	def venmo
+		@user = User.find_for_oauth(env["omniauth.auth"], current_user)
+		if @user.persisted?
+			sign_in_and_redirect @user, :event => :authentication
+			set_flash_message(:notice, :success, :kind => "Venmo") if is_navigational_format?
+		else
+			session["devise.venmo_uid"] = env["omniauth.auth"]
+			redirect_to new_user_registration_url
+		end
 	end
 
 	
