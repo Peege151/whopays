@@ -20,7 +20,10 @@ Devise.setup do |config|
   # config.mailer = 'Devise::Mailer'
 
   # Setting up Devise with Omniauth Venmo
-  config.omniauth :venmo, "1691", "BMHwgUQkcBMTEJSKpbKYyRBg5pktZH7L"
+  require 'omniauth-venmo'
+  require 'omniauth'
+
+  config.omniauth :venmo, '5ZgSpcbZEFfuLhvFjGRUeUzxfvqWM5bT', 'BMHwgUQkcBMTEJSKpbKYyRBg5pktZH7L'
 
 
   # ==> ORM configuration

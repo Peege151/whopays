@@ -164,6 +164,7 @@ DEPENDENCIES
   jbuilder (~> 1.2)
   jquery-rails
   less-rails (~> 2.5.0)
+  omniauth
   omniauth-venmo
   rails (= 4.0.2)
   sass-rails (~> 4.0.0)
