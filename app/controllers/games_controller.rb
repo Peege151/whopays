@@ -1,5 +1,5 @@
 class GamesController < ApplicationController
-    before_action :set_game, only: [:show, :edit, :update, :destroy]
+    before_filter :set_game, only: [:show, :edit, :update, :destroy]
 
 
     def new
@@ -11,7 +11,6 @@ class GamesController < ApplicationController
 
 
 	  def create
-	  	@pool = Pool.find_by(params[:id])
     	@game = current_user.games.build(pool_id: params[:pool_id])# :conditions => ["user_id != ?", current_user.id, "pool_id !=?", pool_id]
       if @game.save
         redirect_to  @game.pool, :flash => { :success => "Pool Joined Successfully." }         
