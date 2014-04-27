@@ -1,6 +1,5 @@
 class PoolsController < ApplicationController
-  before_action :set_pool, only: [:show, :edit, :update, :destroy]
-
+  before_filter :set_pool, only: [:show, :edit, :update, :destroy]
   # GET /pools
   # GET /pools.json
   def index
@@ -10,7 +9,6 @@ class PoolsController < ApplicationController
   # GET /pools/1
   # GET /pools/1.json
   def show
-    @user = User.find_by(params[:id])
     @pools = Pool.all
     @games = Game.where(params[:pool_id])
     #@game = Game.find_by(params[:user_id])
@@ -21,7 +19,7 @@ class PoolsController < ApplicationController
     @pool = Pool.new
   end
   def join
-      @pool = Pool.find_by([:id])
+      @pool = Pool.find([:id])
   end
 
   # GET /pools/1/edit

@@ -30,9 +30,9 @@ group :doc do
   gem 'sdoc', require: false
 end
 gem 'devise'
-#gem 'better_errors'
+gem 'better_errors'
 gem 'binding_of_caller'
-
+gem 'strong_parameters'
 gem 'omniauth-venmo'
 
 
