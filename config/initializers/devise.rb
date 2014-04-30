@@ -11,7 +11,7 @@ Devise.setup do |config|
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
   config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
-config.secret_key = 'bf0d37f1de22138cbd1239a85080edae6648133da68b9663c4f9877d6619c6219e4aecf7d79963bdc6c6b30dca2da53cb0ccced4219ced7a634d1c8b687650b9'
+  config.secret_key = 'bf0d37f1de22138cbd1239a85080edae6648133da68b9663c4f9877d6619c6219e4aecf7d79963bdc6c6b30dca2da53cb0ccced4219ced7a634d1c8b687650b9'
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
 
@@ -229,7 +229,7 @@ config.secret_key = 'bf0d37f1de22138cbd1239a85080edae6648133da68b9663c4f9877d661
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', :scope => 'user,public_repo'
   require "omniauth-venmo"
-  config.omniauth :venmo, '1691', 'BMHwgUQkcBMTEJSKpbKYyRBg5pktZH7L',{:client_options => {:ssl => {:verify => true}}}
+  config.omniauth :venmo, '1691', 'BMHwgUQkcBMTEJSKpbKYyRBg5pktZH7L', :scope => 'access_feed,access_profile,access_friends,make_payments'#, {:client_options => {:ssl => {:verify => true}}}
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

@@ -15,14 +15,16 @@
 	  <tbody>
 	    <% @pool.games.each do |game| %>
 	      <tr>
-	        <td><%= game.user.email %></td> 
-	        <% if game.user.id == current_user.id %>
-	       	<td><%= link_to 'Leave Pool', game, method: :delete, data: { confirm: 'Are you sure?' } %></td> <br>
+	        <td><%= game.user_id %></td> 
+	        <% if game.user_id== current_user.id %>
+	       	<td><%= link_to 'Leave Pool', game, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 	       	<% end %>
 	      </tr>
+	      <br>
+	      <br >
 	    <% end %>
 	  <% end %>
-
+	       <%= link_to "Roll", {:controller => 'pools', :action => "roll"}%> 
 	  </tbody>
 </p>
 <%= link_to 'back', pools_path %>

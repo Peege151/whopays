@@ -10,5 +10,6 @@ Whopays::Application.routes.draw do
    # Setting up the gem 'omniauth-venmo' with path. Note: 'sessions' has been created in the controller in order to use this gem.
   # =>  get '/auth/:provider/callback', to: 'sessions#create' 
 devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
-get '/auth/venmo/callback' => 'users/omniauth_callbacks#venmo'   
+get '/auth/venmo/callback' => 'users/omniauth_callbacks#venmo'  
+match 'pools/:id/roll' => 'pools#roll' 
 end

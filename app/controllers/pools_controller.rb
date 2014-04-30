@@ -9,14 +9,29 @@ class PoolsController < ApplicationController
   # GET /pools/1
   # GET /pools/1.json
   def show
-    @pools = Pool.all
-    @games = Game.where(params[:pool_id])
+  @pool = Pool.find_by_id(params[:id])   
+  @games = Game.where(params[:pool_id])
+  
     #@game = Game.find_by(params[:user_id])
+        
+  end
+  def roll
+      @pool = Pool.find_by_id(params[:id]) 
+      @entrants = @pool.games.pluck(:user_id)
+      #this will change on refresh...
+      @payer = @entrants.sample
+      #this (@pool.player) will not -- as a result of if statement
+        if @pool.payer == nil
+        @pool.update_attribute :payer, "#{@payer}"
+        flash.now[:success] = "We Rolled It!"
+        else
+        flash.now[:notice] = "Pool Has Been Rolled Already"
+       end
   end
   # current_user game is ... current_user.id = game.user.id
   # GET /pools/new
   def new
-    @pool = Pool.new
+      @pool = Pool.new
   end
   def join
       @pool = Pool.find([:id])
@@ -77,12 +92,12 @@ class PoolsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_pool
-      @pool = Pool.find(params[:id])
+      @pool = Pool.find_by_id(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pool_params
-      params.require(:pool).permit(:name)
+      params.require(:pool).permit(:name, :payer)
     end
     def game_params
       params.require(:game).permit(:user_id, :pool_id)

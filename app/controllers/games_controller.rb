@@ -3,9 +3,8 @@ class GamesController < ApplicationController
 
 
     def new
-		@game = Game.new(params[:game])
-		@pool = Pool.where(:id => params[:pool_id])
-
+		  @game = Game.new(params[:game])
+		  @pool = Pool.where(:id => params[:pool_id])
 	  end
 
 
